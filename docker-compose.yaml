@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  elasticsearch:
+    container_name: "demo_elasticsearch"
+    build: ./local/elasticsearch
+    ports:
+      - "9200:9200"
+    networks:
+      - elasticstack
+    # the following 2 params mean that is "-it" option of "docker run" command. it's to keep docker run.
+    tty: true
+    stdin_open: true
+    # the following 2 params are to use systemctl command on centos.
+    privileged: true
+    command: /sbin/init
+
+  kibana:
+    container_name: "demo_kibana"
+    build: ./local/kibana
+    ports:
+      - "5601:5601"
+    networks:
+      - elasticstack
+    # the following 2 params mean that is "-it" option of "docker run" command. it's to keep docker run.
+    tty: true
+    stdin_open: true
+    # the following 2 params are to use systemctl command on centos.
+    privileged: true
+    command: /sbin/init
+
+# docker network create --driver bridge elasticstack
+networks:
+  elasticstack:
+    driver: bridge # default value, can be ommitted
+    name: elasticstack
