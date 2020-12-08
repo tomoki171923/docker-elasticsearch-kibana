@@ -14,7 +14,8 @@ RUN yum update -y \
     && wget https://artifacts.elastic.co/downloads/kibana/kibana-7.6.2-x86_64.rpm \
     && rpm --install kibana-7.6.2-x86_64.rpm \
     && mv kibana.yml /etc/kibana/kibana.yml \
-    && yum clean all \
+    && /bin/systemctl enable kibana.service \
+    && yum clean all
 
 # Restart service. (CMD = exec when docker container is created from docker image.)
 #CMD ["systemctl", "restart", "kibana.service"]

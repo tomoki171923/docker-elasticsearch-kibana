@@ -14,8 +14,9 @@ RUN yum update -y \
     && wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.2-x86_64.rpm \
     && rpm --install elasticsearch-7.6.2-x86_64.rpm \
     && mv elasticsearch.yml /etc/elasticsearch/elasticsearch.yml \
-    && yum clean all \
-    && /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-kuromoji
+    && /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-kuromoji \
+    && /bin/systemctl enable elasticsearch.service \
+    && yum clean all
 
 # Restart service. (CMD = exec when docker container is created from docker image.)
 #CMD ["systemctl", "restart", "elasticsearch.service"]
