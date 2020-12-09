@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   elasticsearch:
-    container_name: "demo_elasticsearch"
+    container_name: "local_elasticsearch"
     build: ./local/elasticsearch
     ports:
       - "9200:9200"
@@ -16,7 +16,7 @@ services:
     command: /sbin/init
 
   kibana:
-    container_name: "demo_kibana"
+    container_name: "local_kibana"
     build: ./local/kibana
     ports:
       - "5601:5601"
