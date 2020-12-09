@@ -1,5 +1,11 @@
 # docker elasticsearch & kibana
 
+## Version 
+
+Elastic Search : 7.6.2
+Kibana : 7.6.2
+
+
 ## Start
 
 ~~~
