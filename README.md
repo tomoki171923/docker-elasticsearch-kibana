@@ -1,4 +1,4 @@
-# docker elasticsearch & kibana
+# docker elasticstack
 
 ## Version 
 
