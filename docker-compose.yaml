@@ -22,6 +22,24 @@ services:
       - "5601:5601"
     networks:
       - elasticstack
+    depends_on:
+      - elasticsearch
+    # the following 2 params mean that is "-it" option of "docker run" command. it's to keep docker run.
+    tty: true
+    stdin_open: true
+    # the following 2 params are to use systemctl command on centos.
+    privileged: true
+    command: /sbin/init
+
+  apm-server:
+    container_name: "local_apm-server"
+    build: ./local/apm-server
+    ports:
+      - "8200:8200"
+    networks:
+      - elasticstack
+    depends_on:
+      - elasticsearch
     # the following 2 params mean that is "-it" option of "docker run" command. it's to keep docker run.
     tty: true
     stdin_open: true

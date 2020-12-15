@@ -18,5 +18,7 @@ RUN yum update -y \
     && /bin/systemctl enable elasticsearch.service \
     && yum clean all
 
+RUN /usr/share/elasticsearch/bin/elasticsearch-users useradd esroot -p esroot123 -r superuser
+
 # Restart service. (CMD = exec when docker container is created from docker image.)
 #CMD ["systemctl", "restart", "elasticsearch.service"]
