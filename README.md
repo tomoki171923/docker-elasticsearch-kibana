@@ -6,6 +6,8 @@ Elastic Search : 7.6.2
 
 Kibana : 7.6.2
 
+APM-Server : 7.6.2
+
 
 ## Start
 
@@ -23,3 +25,4 @@ access http://localhost:5601/app/kibana
 ~~~
 docker-compose down
 ~~~
+
