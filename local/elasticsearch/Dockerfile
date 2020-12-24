@@ -10,9 +10,9 @@ COPY elasticsearch.yml ./
 # Install dependencies.(RUN = exec when docker image is created from dockerfile.)
 RUN yum update -y \
     && yum install -y java-11-openjdk \
-    && yum install -y wget \
-    && wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.2-x86_64.rpm \
+    && curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.2-x86_64.rpm \
     && rpm --install elasticsearch-7.6.2-x86_64.rpm \
+    && cp -pi /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml.org\
     && mv elasticsearch.yml /etc/elasticsearch/elasticsearch.yml \
     && /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-kuromoji \
     && /bin/systemctl enable elasticsearch.service \
