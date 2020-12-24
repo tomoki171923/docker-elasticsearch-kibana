@@ -11,9 +11,9 @@ COPY apm-server.yml ./
 
 RUN yum update -y \
     && yum install -y java-11-openjdk \
-    && yum install -y wget \
-    && wget https://artifacts.elastic.co/downloads/apm-server/apm-server-7.6.2-x86_64.rpm \
+    && curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-7.6.2-x86_64.rpm \
     && rpm -vi apm-server-7.6.2-x86_64.rpm \
+    && cp -pi /etc/apm-server/apm-server.yml /etc/apm-server/apm-server.yml.org \
     && mv apm-server.yml /etc/apm-server/apm-server.yml \
     && /bin/systemctl enable apm-server.service \
     && yum clean all
