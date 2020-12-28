@@ -33,6 +33,7 @@ services:
 
   apm-server:
     container_name: "local_apm-server"
+    hostname: "apm-server"
     build: ./local/apm-server
     ports:
       - "8200:8200"

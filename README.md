@@ -26,3 +26,10 @@ access http://localhost:5601/app/kibana
 docker-compose down
 ~~~
 
+## APM server
+
+if you use the apm , set the following param in your apm agents.
+
+~~~
+server_url: 'http://apm-server:8200'
+~~~
