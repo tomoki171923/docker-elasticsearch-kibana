@@ -19,6 +19,10 @@ docker-compose up -d
 
 access http://localhost:5601/app/kibana
 
+login
+
+Username : esroot
+Password : esroot123
 
 ## Stop
 
