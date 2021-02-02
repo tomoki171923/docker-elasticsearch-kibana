@@ -91,3 +91,4 @@ cluster.name: my_cluster
 node.name: elasticsearch
 network.host: _site_
 cluster.initial_master_nodes: ["elasticsearch"]
+xpack.security.enabled: true

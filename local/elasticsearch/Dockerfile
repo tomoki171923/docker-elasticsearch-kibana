@@ -18,7 +18,10 @@ RUN yum update -y \
     && /bin/systemctl enable elasticsearch.service \
     && yum clean all
 
-RUN /usr/share/elasticsearch/bin/elasticsearch-users useradd esroot -p esroot123 -r superuser
+# Ref Roles: https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-roles.html
+RUN /usr/share/elasticsearch/bin/elasticsearch-users useradd esroot -p esroot123 -r superuser \
+    && /usr/share/elasticsearch/bin/elasticsearch-users useradd kibanaroot -p kibanaroot123 -r kibana_system \
+    && /usr/share/elasticsearch/bin/elasticsearch-users useradd apmroot -p apmroot123 -r apm_system
 
 # Restart service. (CMD = exec when docker container is created from docker image.)
 #CMD ["systemctl", "restart", "elasticsearch.service"]
